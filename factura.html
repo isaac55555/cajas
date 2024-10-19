@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura Global</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #500000;
+            padding: 10px;
+        }
+
+        .navbar-left {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            background-color: #750000;
+            border-radius: 4px;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #500000;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-container div {
+            margin: 0 0 10px 0;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #500000;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #570000;
+        }
+
+        .table-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table-container th, .table-container td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .visualizer {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Superior -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="success.html" class="navbar-link">Ventanilla de Cobro</a>
+        <a href="arqueo.html" class="navbar-link">Arqueo Detallado</a>
+        <a href="concentrado.html" class="navbar-link">Concentrado</a>
+        <a href="herramientas.html" class="navbar-link">Herramientas</a>
+        <a href="factura.html" class="navbar-link">Factura Global</a>
+        <a href="integracion.html" class="navbar-link">Integración</a>
+    </div>
+    <div class="navbar-right">
+        <img src="logo.png" alt="Logo" class="navbar-logo">
+    </div>
+</nav>
+
+<!-- Contenedor Principal -->
+<div class="container">
+    <h2>Reporte de Factura Global</h2>
+
+    <div class="form-container">
+        <div>
+            <label for="caja">Caja:</label>
+            <select id="caja">
+                <option value="cajero_1">Cajero 1</option>
+                <option value="cajero_2">Cajero 2</option>
+                <option value="cajero_3">Cajero 3</option>
+                <option value="cajero_4">Cajero 4</option>
+                <option value="cajero_5">Cajero 5</option>
+                <option value="cajero_6">Cajero 6</option>
+                <option value="cajero_7">Cajero 7</option>
+                <option value="cajero_8">Cajero 8</option>
+                <option value="cajero_9">Cajero 9</option>
+                <option value="cajero_10">Cajero 10</option>
+                <option value="cajero_11">Cajero 11</option>
+                <option value="cajero_12">Cajero 12</option>
+                <option value="cajero_13">Cajero 13</option>
+                <option value="cajero_14">Cajero 14</option>
+                <option value="cajero_15">Cajero 15</option>
+                <option value="cajero_16">Cajero 16</option>
+                <option value="cajero_17">Cajero 17</option>
+                <option value="cajero_18">Cajero 18</option>
+                <option value="cajero_19">Cajero 19</option>
+                <option value="cajero_20">Cajero 20</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="year">Año:</label>
+            <select id="year">
+                <option value="2024">2024</option>
+                <option value="2024">2025</option>
+                <option value="2024">2026</option>
+                <option value="2024">2027</option>
+            </select>
+        </div>
+
+        <button id="consultar">Consultar</button>
+        <button id="imprimir">Imprimir Reporte</button>
+    </div>
+
+    <div class="visualizer">
+        <h3>Visualizador de Reporte</h3>
+        <div>
+            <img src="escudo.png" alt="Logo Ayuntamiento" style="float: left; height: 70px;">
+            <img src="logo.png" alt="Logo Municipio" style="float: right; height: 100px;">
+        </div>
+        <div style="text-align: center;">
+            <strong>Ayuntamiento de [Nombre del Ayuntamiento]</strong><br>
+            Dirección del Ayuntamiento<br>
+            Teléfono: [Número de Teléfono]<br>
+            Correo: [Correo Electrónico]
+        </div>
+        <div>
+            <strong>Subdirección de Ingresos</strong>
+        </div>
+        <div>
+            <strong>Reporte Detallado de Ingresos por Recibo - Año [Año Seleccionado]</strong>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>CUENTA</th>
+                    <th>IMPORTE</th>
+                    <th>MULTA</th>
+                    <th>RECARGO</th>
+                    <th>GASTO</th>
+                    <th>OTRO</th>
+                    <th>SUBSIDIO</th>
+                    <th>TOTAL</th>
+                    <th>CLAVE</th>
+                    <th>RECIBO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos del reporte se generarán aquí -->
+            </tbody>
+        </table>
+
+        <div style="margin-top: 20px;">
+            <strong>Número de Páginas:</strong> <span id="num_paginas">1</span><br>
+            <strong>Total de Páginas:</strong> <span id="total_paginas">1</span><br>
+            <label for="zoom">Zoom:</label>
+            <select id="zoom">
+                <option value="100">100%</option>
+                <option value="150">150%</option>
+                <option value="200">200%</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('consultar').addEventListener('click', function() {
+        // Aquí va la lógica para consultar y mostrar el reporte según la caja y el año seleccionados
+        alert('Consultando reporte...');
+    });
+
+    document.getElementById('imprimir').addEventListener('click', function() {
+        // Aquí va la lógica para imprimir el reporte
+        alert('Imprimiendo reporte...');
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concentrado de Ingresos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #500000;
+            padding: 10px;
+        }
+
+        .navbar-left {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            background-color: #750000;
+            border-radius: 4px;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #500000;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .form-container div {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #500000;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #570000;
+        }
+
+        .report-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .report-header img {
+            height: 50px;
+        }
+
+        .report-details {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .report-details h3 {
+            margin: 5px 0;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .report-table th, .report-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .pagination div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pagination select {
+            width: auto;
+        }
+
+        /* Media query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .form-container {
+                flex-direction: column;
+            }
+
+            .form-container div {
+                margin: 0 0 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Superior -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="success.html" class="navbar-link">Ventanilla de Cobro</a>
+        <a href="arqueo.html" class="navbar-link">Arqueo Detallado</a>
+        <a href="concentrado.html" class="navbar-link">Concentrado</a>
+        <a href="herramientas.html" class="navbar-link">Herramientas</a>
+        <a href="factura.html" class="navbar-link">Factura Global</a>
+        <a href="integracion.html" class="navbar-link">Integración</a>
+    </div>
+    <div class="navbar-right">
+        <img src="logo.png" alt="Logo" class="navbar-logo">
+    </div>
+</nav>
+
+<!-- Contenedor Principal -->
+<div class="container">
+    <h2>Concentrado de Ingresos</h2>
+
+    <!-- Formulario para seleccionar semana, mes y año -->
+    <div class="form-container">
+        <div>
+            <label for="semana">Semana</label>
+            <input type="number" id="semana" min="1" max="52" placeholder="Número de Semana">
+        </div>
+        <div>
+            <label for="mes">Mes</label>
+            <select id="mes">
+                <option value="" disabled selected>Selecciona un mes</option>
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select>
+        </div>
+
+        <div>
+            <button id="consultar">Consultar</button>
+        </div>
+        <div>
+            <button id="imprimir">Imprimir Reporte</button>
+        </div>
+    </div>
+
+    <!-- Visualizador del reporte -->
+    <div class="report-container">
+        <!-- Encabezado del reporte -->
+        <div class="report-header">
+            <img src="escudo.png" alt="Logo Ayuntamiento"style="float: right; height: 80px;">
+            <div class="report-details">
+                <h3>H. Ayuntamiento de Ecatepec</h3>
+                <p>Subdirección de Ingresos</p>
+                <p>Reporte Concentrado Detallado</p>
+            </div>
+            <img src="logo.png" alt="Logo Municipio"style="float: right; height: 100px;">
+        </div>
+
+        <!-- Detalles del reporte -->
+        <div class="report-details">
+            <p><strong>Periodo:</strong> <span id="periodo_reporte">Selecciona un periodo</span></p>
+        </div>
+
+        <!-- Tabla del reporte -->
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>CUENTA</th>
+                    <th>IMPORTE</th>
+                    <th>MULTA</th>
+                    <th>RECARGO</th>
+                    <th>GASTO</th>
+                    <th>OTRO</th>
+                    <th>SUBSIDIO</th>
+                    <th>TOTAL</th>
+                    <th>CLAVE</th>
+                    <th>RECIBO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se generarán dinámicamente los datos -->
+                <tr>
+                    <td>0001</td>
+                    <td>$500.00</td>
+                    <td>$0.00</td>
+                    <td>$50.00</td>
+                    <td>$10.00</td>
+                    <td>$0.00</td>
+                    <td>$20.00</td>
+                    <td>$580.00</td>
+                    <td>12345</td>
+                    <td>001</td>
+                </tr>
+                <!-- Más filas según el reporte -->
+            </tbody>
+        </table>
+
+        <!-- Paginación y Zoom -->
+        <div class="pagination">
+            <div>
+                <button>-</button>
+                <select id="zoom">
+                    <option value="100%">100%</option>
+                    <option value="110%">110%</option>
+                    <option value="120%">120%</option>
+                </select>
+                <button>+</button>
+            </div>
+            <div>
+                <span>Página 1 de 5</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Lógica para manipular el periodo seleccionado
+    document.getElementById('consultar').addEventListener('click', function() {
+        const semana = document.getElementById('semana').value;
+        const mes = document.getElementById('mes').value;
+        const anio = document.getElementById('anio').value;
+        
+        let periodo = '';
+        if (semana) {
+            periodo = `Semana ${semana}`;
+        }
+        if (mes) {
+            const mesesNombres = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            periodo += (periodo ? ', ' : '') + `Mes ${mesesNombres[mes - 1]}`;
+        }
+        if (anio) {
+            periodo += (periodo ? ', ' : '') + `Año ${anio}`;
+        }
+
+        document.getElementById('periodo_reporte').innerText = periodo;
+    });
+
+    // Lógica para impresión
+    document.getElementById('imprimir').addEventListener('click', function() {
+        window.print();
+    });
+</script>
+
+</body>
+</html>

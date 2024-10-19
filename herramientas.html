@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de Administración</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #500000;
+            padding: 10px;
+        }
+
+        .navbar-left {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            background-color: #750000;
+            border-radius: 4px;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #500000;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-container div {
+            margin: 0 0 10px 0;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #500000;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #570000;
+        }
+
+        .table-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table-container th, .table-container td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Superior -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="success.html" class="navbar-link">Ventanilla de Cobro</a>
+        <a href="arqueo.html" class="navbar-link">Arqueo Detallado</a>
+        <a href="concentrado.html" class="navbar-link">Concentrado</a>
+        <a href="herramientas.html" class="navbar-link">Herramientas</a>
+        <a href="factura.html" class="navbar-link">Factura Global</a>
+        <a href="integracion.html" class="navbar-link">Integración</a>
+    </div>
+    <div class="navbar-right">
+        <img src="logo.png" alt="Logo" class="navbar-logo">
+    </div>
+</nav>
+
+<!-- Contenedor Principal -->
+<div class="container">
+    <h2>Herramientas de Administración</h2>
+
+    <!-- Formulario para hacer correcciones -->
+    <div class="form-container">
+        <h3>Corrección de Campos</h3>
+        <div>
+            <label for="campo">Seleccionar Campo</label>
+            <select id="campo">
+                <option value="cajero">Cajero</option>
+                <option value="cobro">Cobro</option>
+                <option value="fecha">Fecha</option>
+                <!-- Más opciones si es necesario -->
+            </select>
+        </div>
+        <div>
+            <label for="valor">Nuevo Valor</label>
+            <input type="text" id="valor" placeholder="Ingrese nuevo valor">
+        </div>
+        <div>
+            <button id="guardarCambios">Guardar Cambios</button>
+        </div>
+    </div>
+
+    <!-- Tabla de cajeros y cobros -->
+    <div class="table-container">
+        <h3>Administrar Cajeros y Cobros</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cajero</th>
+                    <th>Cobro</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Cajero 1</td>
+                    <td>$500.00</td>
+                    <td>2024-10-01</td>
+                    <td>
+                        <button class="editar-btn">Editar</button>
+                        <button class="eliminar-btn">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Cajero 2</td>
+                    <td>$300.00</td>
+                    <td>2024-10-02</td>
+                    <td>
+                        <button class="editar-btn">Editar</button>
+                        <button class="eliminar-btn">Eliminar</button>
+                    </td>
+                </tr>
+                <!-- Más filas según los datos -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    // Lógica para guardar cambios en campos
+    document.getElementById('guardarCambios').addEventListener('click', function() {
+        const campo = document.getElementById('campo').value;
+        const nuevoValor = document.getElementById('valor').value;
+
+        // Aquí se implementaría la lógica para guardar el nuevo valor en el sistema
+        alert(`Cambios guardados: ${campo} actualizado a "${nuevoValor}"`);
+    });
+
+    // Funcionalidad para editar y eliminar registros
+    document.querySelectorAll('.editar-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const fila = this.closest('tr');
+            const cajero = fila.cells[1].innerText;
+            const cobro = fila.cells[2].innerText;
+            const fecha = fila.cells[3].innerText;
+
+            // Lógica para editar el registro (se puede abrir un modal o formulario)
+            const nuevoValor = prompt(`Editar Cajero (${cajero}) o Cobro (${cobro}) o Fecha (${fecha})`);
+            if (nuevoValor) {
+                fila.cells[1].innerText = nuevoValor; // Se puede ajustar según el campo a editar
+                alert(`Registro editado: ${nuevoValor}`);
+            }
+        });
+    });
+
+    document.querySelectorAll('.eliminar-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const fila = this.closest('tr');
+            if (confirm("¿Estás seguro de que deseas eliminar este registro?")) {
+                fila.remove(); // Eliminar fila de la tabla
+                alert("Registro eliminado");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

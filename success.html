@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Municipio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #500000;
+            padding: 10px;
+        }
+
+        .navbar-left {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            background-color: #750000;
+            border-radius: 4px;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Adaptación para dispositivos móviles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-left {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .navbar-logo {
+                margin-top: 10px;
+                height: 30px;
+            }
+        }
+
+        .welcome-container {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .container {
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .left, .right {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .field-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+        }
+
+        .field-group input {
+            width: 100%;
+            max-width: 100px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        table th, table td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        button {
+            padding: 8px;
+            background-color: #500000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #570000;
+        }
+
+        .right .field-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .right .field-group select, .right .field-group input {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .right .field-group input:last-child {
+            margin-right: 0;
+        }
+
+        /* Media Query para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .left, .right {
+                flex: none;
+                min-width: 100%;
+            }
+
+            .field-group input {
+                max-width: 100%;
+            }
+
+            table th, table td {
+                font-size: 12px;
+                padding: 6px;
+            }
+
+            button {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar Superior -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="success.html" class="navbar-link">Ventanilla de Cobro</a>
+        <a href="arqueo.html" class="navbar-link">Arqueo Detallado</a>
+        <a href="concentrado.html" class="navbar-link">Concentrado</a>
+        <a href="herramientas.html" class="navbar-link">Herramientas</a>
+        <a href="factura.html" class="navbar-link">Factura Global</a>
+        <a href="integracion.html" class="navbar-link">Integración</a>
+    </div>
+    <div class="navbar-right">
+        <!-- Logo -->
+        <img src="logo.png" alt="Logo" class="navbar-logo">
+    </div>
+</nav>
+
+<div class="welcome-container">
+    <h1>¡Bienvenido, admin!</h1>
+    <p>Has iniciado sesión correctamente.</p>
+</div>
+
+<!-- Contenedor Principal -->
+<div class="container">
+    <!-- Sección Izquierda -->
+    <div class="left">
+        <h3>Código de Barras:</h3>
+        <input type="text" id="barcode" maxlength="15" placeholder="Escanea el código de barras...">
+
+        <div class="field-group">
+            <input type="text" id="dir" maxlength="4" placeholder="DIR">
+            <input type="text" id="depto" maxlength="4" placeholder="Depto">
+            <input type="text" id="liquidacion" maxlength="10" placeholder="Liquidación">
+        </div>
+
+        <h3>Clave Catastral:</h3>
+        <div class="field-group">
+            <input type="text" value="094" readonly>
+            <input type="text" id="clave2" maxlength="2" placeholder="XX">
+            <input type="text" id="clave3" maxlength="3" placeholder="XXX">
+            <input type="text" id="clave4" maxlength="2" placeholder="XX">
+            <input type="text" id="clave5" maxlength="2" placeholder="XX">
+            <input type="text" id="clave6" maxlength="6" placeholder="XXXXXX">
+        </div>
+
+        <h3>Datos del Contribuyente:</h3>
+        <input type="text" id="propietario" placeholder="Propietario">
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="text" id="domicilio" placeholder="Domicilio">
+        <input type="text" id="rfc" placeholder="R.F.C.">
+
+        <h3>Periodo de Pago:</h3>
+        <div class="field-group">
+            <input type="date" id="fecha_inicio" placeholder="Fecha de Inicio">
+            <input type="date" id="fecha_final" placeholder="Fecha de Fin">
+        </div>
+
+        <input type="text" id="registro" maxlength="10" placeholder="Registro">
+        <textarea id="observaciones" placeholder="Observaciones"></textarea>
+
+        <h3>Captura de Conceptos:</h3>
+        <select id="concepto">
+            <option value="impuesto_predial">Impuesto Predial</option>
+            <option value="descuento">Descuento</option>
+            <option value="bonificacion">Bonificación</option>
+        </select>
+        <input type="number" id="ejercicio" placeholder="Ejercicio">
+        <input type="number" id="importe" placeholder="Importe">
+        <button id="agregar">Agregar</button>
+    </div>
+
+    <!-- Sección Derecha -->
+    <div class="right">
+        <!-- Botón Limpiar -->
+        <button id="btnLimpiar">Limpiar</button>
+
+        <!-- Tesorería y Fecha de Cobro -->
+        <h3>Tesorería:</h3>
+        <input type="text" id="tesoreria" value="Tesorería Municipal" disabled>
+
+        <h3>Fecha de Cobro:</h3>
+        <input type="text" id="fechaCobro" disabled>
+
+        <h3>Folio de Recibo:</h3>
+        <input type="text" id="folio" value="TT-00000000" disabled>
+
+        <h3>Detalle de Pago:</h3>
+        <table id="detalle_pago">
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Ejercicio</th>
+                    <th>Clave</th>
+                    <th>Importe</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3>Recibo:</h3>
+        <input type="text" id="Recibo" value="Recibo" >
+        <h3>Cambio:</h3>
+        <input type="text" id="Cambio" value="Cambio" >
+                <!-- Botón Imprimir Recibo -->
+                <button id="btnImprimir">Capturar</button>
+                <div class="field-group">
+                    <select id="tipo_cobro">
+                        <option value="efectivo">Efectivo</option>
+                        <option value="credito">Tarjeta de Crédito</option>
+                        <option value="debito">Tarjeta de Débito</option>
+                        <option value="cheque">Cheque</option>
+                        <option value="transferencia">Transferencia</option>
+                        <option value="no_aplica">No Aplica</option>
+                    </select>
+        
+                    <select id="institucion">
+                        <option value="banco_1">Banco 1</option>
+                        <option value="banco_2">Banco 2</option>
+                        <option value="banco_3">Banco 3</option>
+                    </select>
+                </div>
+        <h3>Institucion:</h3>
+        <input type="text" id="Institucion" value="Institucion" disabled>
+        <h3>Importe:</h3>
+        <input type="text" id="Importe" value="Importe" disabled>
+        <h3>Comp Incial:</h3>
+        <input type="text" id="CompI" value="Comp Inicial" disabled>
+        <table id="detalle_Institucion">
+            <thead>
+                <tr>
+                    <th>Institucion</th>
+                    <th>Folio</th>
+                    <th>Clave</th>
+                    <th>Importe</th>
+                    <th>Comp Inicial</th>
+                    <th>Comp Final</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

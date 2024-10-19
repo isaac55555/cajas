@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integración</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #500000;
+            padding: 10px;
+        }
+
+        .navbar-left {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar-link {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            background-color: #750000;
+            border-radius: 4px;
+        }
+
+        .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #500000;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-container div {
+            margin: 0 0 10px 0;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #500000;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #570000;
+        }
+
+        .table-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table-container th, .table-container td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Superior -->
+<nav class="navbar">
+    <div class="navbar-left">
+        <a href="index.html" class="navbar-link">Ventanilla de Cobro</a>
+        <a href="arqueo.html" class="navbar-link">Arqueo Detallado</a>
+        <a href="concentrado.html" class="navbar-link">Concentrado</a>
+        <a href="herramientas.html" class="navbar-link">Herramientas</a>
+        <a href="factura.html" class="navbar-link">Factura Global</a>
+        <a href="integracion.html" class="navbar-link">Integración</a>
+    </div>
+    <div class="navbar-right">
+        <img src="logo.png" alt="Logo" class="navbar-logo">
+    </div>
+</nav>
+
+<!-- Contenedor Principal -->
+<div class="container">
+    <h2>Integración de Datos</h2>
+
+    <div class="form-container">
+        <div>
+            <label for="caja">Selecciona la Caja:</label>
+            <select id="caja">
+                <option value="cajero_1">Cajero 1</option>
+                <option value="cajero_2">Cajero 2</option>
+                <option value="cajero_3">Cajero 3</option>
+                <!-- Más opciones según sea necesario -->
+            </select>
+        </div>
+
+        <div>
+            <label for="anio">Año:</label>
+            <select id="anio">
+                <option value="2023">2024</option>
+                <option value="2024">2025</option>
+                <!-- Más opciones de años -->
+            </select>
+        </div>
+
+        <div>
+            <label for="tipo">Tipo de Integración:</label>
+            <select id="tipo">
+                <option value="cobros">Cobros</option>
+                <option value="pagos">Pagos</option>
+                <option value="reportes">Reportes</option>
+                <!-- Otras opciones según sea necesario -->
+            </select>
+        </div>
+
+        <button id="integrar">Integrar Datos</button>
+    </div>
+
+    <div class="table-container">
+        <h3>Resultados de la Integración</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se generarán las filas de datos de integración -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.getElementById('integrar').addEventListener('click', function() {
+        // Aquí va la lógica para integrar los datos según la caja, año y tipo seleccionados
+        alert('Integrando datos...');
+    });
+</script>
+
+</body>
+</html>

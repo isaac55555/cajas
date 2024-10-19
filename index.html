@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Municipio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-container img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .login-container input,
+        .login-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #500000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #500000;
+        }
+
+        /* Media Queries para dispositivos móviles */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 15px;
+            }
+            .login-container input,
+            .login-container select,
+            .login-container button {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 10px;
+            }
+            .login-container h2 {
+                font-size: 24px;
+            }
+            .login-container input,
+            .login-container select,
+            .login-container button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <!-- Agregar el logo -->
+    <img src="logo.png" alt="Logo del municipio">
+    <h2>Iniciar Sesión Módulo de Cajas</h2>
+    <form id="loginForm">
+        <label for="server">Servidor:</label>
+        <select name="server" id="server" required>
+            <option value="">Selecciona un servidor</option>
+            <option value="palacio">Palacio</option>
+            <option value="receptoria_americas">Receptoría Américas</option>
+            <option value="receptoria_aragon">Receptoría Aragón</option>
+        </select>
+
+        <label for="username">Usuario:</label>
+        <input type="text" name="username" id="username" placeholder="Ingrese su usuario" required>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" id="password" placeholder="Ingrese su contraseña" required>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+
+        // Credenciales válidas
+        const validUsername = "admin";
+        const validPassword = "admin";
+
+        // Obtener los datos ingresados por el usuario
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const server = document.getElementById("server").value;
+
+        // Validar si las credenciales son correctas
+        if (username === validUsername && password === validPassword) {
+            alert("¡Inicio de sesión exitoso! Servidor seleccionado: " + server);
+            // Aquí puedes redirigir a otra página si deseas
+            window.location.href = "success.html"; // Redirigir a una página de éxito
+        } else {
+            alert("Usuario o contraseña incorrectos.");
+        }
+    });
+</script>
+
+</body>
+</html>
+
